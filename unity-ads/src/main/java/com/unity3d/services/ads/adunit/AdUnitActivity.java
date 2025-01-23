@@ -83,6 +83,11 @@ public class AdUnitActivity extends Activity implements IAdUnitActivity {
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {
+        if (keyCode == KeyEvent.KEYCODE_BACK) {
+            if ((applicationContext as Application).isAdShowing()) {
+                return true // Disable back press
+            }
+        }
 		return _controller.onKeyDown(keyCode, event);
 	}
 
